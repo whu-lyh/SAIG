@@ -68,6 +68,10 @@ def save_model(args, model, optimizer, epoch, best_acc):
 
 def setup(args):
     # Prepare model
+    # Note that the satellite image has dimensions of 256 x 256, while the street view image is 128 x 512. 
+    # When processed by the Vision Transformer (ViT) model's patchify module, which employs a patch size of 16 x 16,
+    # both image types are divided into precisely 256 patches each. 
+    # This design proves to be remarkably ingenious, as it simplifies the entire process.
     if args.model_type == 'SAIG_D':
         model_grd = SAIG_Deep(img_size = args.img_grd_size)
         model_sat = SAIG_Deep(img_size = args.img_sat_size)
