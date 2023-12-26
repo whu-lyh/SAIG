@@ -73,6 +73,9 @@ class SAFABranch(nn.Module):
         return x
 
 class MixerHead_Branch(nn.Module):
+    """SMD
+        This operation depends on the number of patches, if there are two many patches, the computation will explore.
+    """
     def __init__(self, model,N):
         super().__init__()
         self.backbone = model
